@@ -1,5 +1,5 @@
-import java.io.*;   // for reading amd writting file
-import java.util.*;   // for scanner and list
+import java.io.*;   // for reading and writting file ( using all under io package)
+import java.util.*;   //for scanner and list ( using all under util package)
 
 public class StudentGradeCalculator {
 
@@ -8,6 +8,7 @@ public class StudentGradeCalculator {
             String fileName = "grade.txt";
             File file = new File(fileName);
 
+            // Checking and creating file if it or it doesn't exist
             if (!file.exists()) {
                 System.out.println("Cannot find File '" + fileName + "' Creating sample file...");
                 SampleFile(fileName);
@@ -15,6 +16,7 @@ public class StudentGradeCalculator {
 
             }
 
+            // Showing / printing the result / final output
             double averageGrade = CalculateGrade(fileName);
             System.out.println("\nStudent Grades:");
             PrintGrades(fileName);
@@ -45,18 +47,18 @@ public class StudentGradeCalculator {
         int count = 0;
         
         while ((line = reader.readLine()) != null) {
-            if (line.trim().isEmpty()) {
+            if (line.trim().isEmpty()) {   // for skipping empty line
                 continue;
             }
             
-            String[] parts = line.split("\\s+");
+            String[] parts = line.split("\\s+"); // spliting parts
             
-            if (parts.length < 2 || parts[0].equals("Average")) {
+            if (parts.length < 2 || parts[0].equals("Average")) {  //Splitting parts into 2
                 continue;
             }
             
             try {
-                double grade = Double.parseDouble(parts[parts.length - 1]);
+                double grade = Double.parseDouble(parts[parts.length - 1]); // label last as grade and turn it into a value ( double )
                 sum += grade;
                 count++;
             } catch (NumberFormatException e) {
@@ -87,7 +89,8 @@ public class StudentGradeCalculator {
             if (parts.length < 2 || parts[0].equals("Average")) {
                 continue;
             }
-            
+
+            // exract all part into one except the last as separate part
             StringBuilder name = new StringBuilder();
             for (int i = 0; i < parts.length - 1; i++) {
                 name.append(parts[i]);
@@ -103,7 +106,5 @@ public class StudentGradeCalculator {
         
         reader.close();
     }
-
-
 
 }
