@@ -16,7 +16,7 @@ public class StudentGradeCalculator {
 
             }
 
-            // Showing / printing the result / final output
+            // Showing or printing the result or final output
             double averageGrade = CalculateGrade(fileName);
             System.out.println("\nStudent Grades:");
             PrintGrades(fileName);
